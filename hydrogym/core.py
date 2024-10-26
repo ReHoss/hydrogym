@@ -315,7 +315,7 @@ class TransientSolver:
         """
     raise NotImplementedError
 
-  def reset(self, t=0.0):
+  def reset(self):
     """Reset variables for the timestepper"""
     pass
 
