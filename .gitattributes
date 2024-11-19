@@ -1,1 +1,4 @@
 *.msh filter=lfs diff=lfs merge=lfs -text
+hydrogym/firedrake/envs/cavity/coarse.msh filter=lfs diff=lfs merge=lfs -text
+hydrogym/firedrake/envs/cylinder/coarse.msh filter=lfs diff=lfs merge=lfs -text
+hydrogym/firedrake/envs/pinball/coarse.msh filter=lfs diff=lfs merge=lfs -text
