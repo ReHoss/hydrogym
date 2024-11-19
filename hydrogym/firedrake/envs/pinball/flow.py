@@ -26,11 +26,20 @@ class Pinball(FlowConfig):
   rad = 0.5
   x0 = [0.0, rad * 1.5 * 1.732, rad * 1.5 * 1.732]
   y0 = [0.0, 1.5 * rad, -1.5 * rad]
-
-  MAX_CONTROL = 10.0  # TODO: Limit this based on literature
+  
+  # Changes @ReHoss - Start: Set back the MAX_CONTROL to 0.5 * np.pi
+  MAX_CONTROL = 0.5 * np.pi  # TODO: Limit this based on literature
+  # Changes @ReHoss - End
   TAU = 0.05  # TODO: Tune this based on vortex shedding period
 
   MESH_DIR = os.path.abspath(f"{__file__}/..")
+  
+  # Changes @ReHoss - Start: Add a flexible MAX_CONTROL
+  def __init__(self, max_control=None, **kwargs):
+    if max_control is not None:
+      self.MAX_CONTROL = max_control
+    super().__init__(**kwargs)
+  # Changes @ReHoss - End
 
   def init_bcs(self, function_spaces=None):
     if function_spaces is None:

@@ -41,6 +41,13 @@ class CylinderBase(FlowConfig):
   CYLINDER = 5
 
   MESH_DIR = os.path.abspath(f"{__file__}/..")
+  
+  # Changes @ReHoss - Start: Add a flexible MAX_CONTROL
+  def __init__(self, max_control=None, **kwargs):
+    if max_control is not None:
+      self.MAX_CONTROL = max_control
+    super().__init__(**kwargs)
+  # Changes @ReHoss - End
 
   @property
   def num_inputs(self) -> int:

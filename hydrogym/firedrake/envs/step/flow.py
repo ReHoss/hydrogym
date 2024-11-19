@@ -44,7 +44,7 @@ class Step(FlowConfig):
 
   MESH_DIR = os.path.abspath(f"{__file__}/..")
 
-  def __init__(self, **kwargs):
+  def __init__(self, max_control=None, **kwargs):
     # The random forcing is implemented as low-pass-filtered white noise
     # using the DampedActuator class as a filter.  The idea is to limit the
     # dependence of the spectral characteristics of the forcing on the time
@@ -54,6 +54,12 @@ class Step(FlowConfig):
     self.noise_seed = kwargs.pop("noise_seed", None)
     self.noise_state = fd.Constant(0.0)
     self.rng = fd.Generator(fd.PCG64(seed=self.noise_seed))
+
+    # Changes @ReHoss - Start: Add a flexible MAX_CONTROL
+    if max_control is not None:
+      self.MAX_CONTROL = max_control
+    # Changes @ReHoss - End
+    
     super().__init__(**kwargs)
 
   @property
